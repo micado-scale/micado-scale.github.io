@@ -63,7 +63,7 @@ specific inputs are required, but **Terraform: create:** should be present
 
 - The other option is by enabling a
   [System-Assigned Managed Identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#enable-system-assigned-managed-identity-during-creation-of-a-vm)
-  on the **MiCADO Master VM** and then
+  on the **MiCADO Control Plane** and then
   [modify access control](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal#use-rbac-to-assign-a-managed-identity-access-to-another-resource)
   of the **current subscription** to assign the role of **Contributor** to
-  the **MiCADO Master VM**
+  the **MiCADO Control Plane**

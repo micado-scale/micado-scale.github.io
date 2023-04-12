@@ -226,7 +226,7 @@ micado config settings
 
 `web_listening_port`{ #web-listening-port }
 
-:   *integer.* Port number of the dasboard on MiCADO master. Defaults to 443.
+:   *integer.* Port number of the dasboard on MiCADO Control Plane. Defaults to 443.
 
 `enable_occopus` { #enable-occopus }
 

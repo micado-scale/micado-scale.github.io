@@ -79,7 +79,7 @@
 - Fix Master-Worker Ubuntu mismatch bug
 - Handle undefined credential file path
 - Store credential data in Kubernetes Secrets
-- Support updates of credentials on a deployed MiCADO Master
+- Support updates of credentials on a deployed MiCADO Control Plane
 - Add demo ADTs for Azure & GCE
 - Update QuickStart docs in README
 - Bump Grafana to v6.6.2
@@ -145,7 +145,7 @@
 - update MiCADO internal core services to run in Kubernetes pods
 - remove Consul and replace it with Prometheus’ Kubernetes Service Discovery
 - update cAdvisor and NodeExporter to run as Kubernetes DaemonSets
-- introduce the support for creating prepared image for the MiCADO master and the MiCADO worker
+- introduce the support for creating prepared image for the MiCADO Control Plane and the MiCADO worker
 - introduce the support for deploying unique “sets” of virtual machines scaling independently
 - update Grafana to track the independently scaling VMs from the drop-down Node ID
 - update scrape interval between Prometheus and cAdvisor to be less frequent
@@ -173,7 +173,7 @@
 
 ## v0.7.2 (25 Feb 2019)
 
-- add checking for minimal memory on micado master at deployment
+- add checking for minimal memory on MiCADO Control Plane at deployment
 - support private networks on cloudsigma
 - support user-defined contextualisation
 - support re-use across other container & cloud orchestrators in ADT
@@ -183,7 +183,7 @@
 - add support for specifying custom service details (NodePort, ClusterIP, etc.)
 - minor improvements to Grafana dashboard
 - support asynchronous calls through TOSCASubmitter API
-- fix kubectl error on MiCADO Master restart
+- fix kubectl error on MiCADO Control Plane restart
 - fix TOSCASubmitter rollback on errors
 - fix TOSCASubmitter status & output display
 - add support for encrypting master-worker communication
@@ -232,7 +232,7 @@
 **v0.6.0 (10 Sept 2018)**
 
 - introduce documentation repository and host its content at http://micado-scale.readthedocs.io
-- improve MiCADO master containers restart policy
+- improve MiCADO Control Plane containers restart policy
 - fix MTU issue in relation to Docker
 - fix Occopus restart issue
 - fix health-checking for Cloudbroker-AWS platform
@@ -248,7 +248,7 @@
 - add new links to Dashboard to reflect the changes introduced by reverse proxying
 - fix Dashboard to generate links based on the contents of the Host header to find the frontend URL automatically
 - make consul security encryption based on generated random key instead of static key
-- add reverse proxy, TLS encryption and application-level firewalling capabilities to the web interfaces exposed by the MiCADO master node
+- add reverse proxy, TLS encryption and application-level firewalling capabilities to the web interfaces exposed by the MiCADO Control Plane node
 - add packet filtering for closing down non-public ports
 - add systemd unit for MiCADO services
 - update the ansible playbook to use the built-in service module for installing and handling MiCADO services
@@ -275,4 +275,4 @@
 - dashboard added with Docker Visualizer, Grafana, Prometheus
 - deployment with Ansible playbook
 - support private docker registry
-- improve persistence of MiCADO master services
+- improve persistence of MiCADO Control Plane services

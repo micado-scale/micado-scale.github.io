@@ -155,11 +155,11 @@ The TerraformAdaptor currently supports the following cloud resources:
 - Google Compute Engine
 
 To use Terraform with MiCADO it must be **enabled** during deployment
-of the MiCADO Master, and an appropriate **ADT** should be used.
+of the MiCADO Control Plane, and an appropriate **ADT** should be used.
 
 #### Improved Credential File Handling
 
-Cloud credentials are now stored in Kubernetes Secrets on the MiCADO Master.
+Cloud credentials are now stored in Kubernetes Secrets on the MiCADO Control Plane.
 Additionally, credentials on an already deployed MiCADO can now be updated
 or modified using Ansible.
 
@@ -186,7 +186,7 @@ more reasonable values.
 #### Different Versioned Workers
 
 In previous versions of MiCADO, deployed worker nodes which did not match
-the Ubuntu version of the MiCADO Master would be unable to join the
+the Ubuntu version of the MiCADO Control Plane would be unable to join the
 MiCADO cluster. This has now been resolved.
 
 ### Known Issues & Deprecations

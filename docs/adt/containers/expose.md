@@ -42,7 +42,7 @@ When a random port doesn't cut it, we can provide our own (so long as it falls i
 ```
 > **Note** we forgot `type: NodePort` here. MiCADO sees a nodePort defined, so it fills this in for us.
 
-We can now reach **port 80** of the NGINX container by pointing to `:30080` on **any node in the cluster**. Since we generally know the IP of the MiCADO Master, the easiest endpoint would be `ip.of.micado.master:30080`.
+We can now reach **port 80** of the NGINX container by pointing to `:30080` on **any node in the cluster**. Since we generally know the IP of the MiCADO Control Plane, the easiest endpoint would be `ip.of.micado.master:30080`.
 
 !!! info
     If multiple replicas of a container exist, Kubernetes will generally apply a **round-robin** technique for deciding which container to route a request to.

@@ -10,7 +10,7 @@ a rough outline to the required configurations.
 
 ## Installation
 
-Perform the following steps either on your local machine or on MiCADO master depending on the installation method.
+Perform the following steps either on your local machine or on MiCADO Control Plane depending on the installation method.
 
 ### Step 1: Download the ansible playbook
 
@@ -21,9 +21,9 @@ tar -zxvf ansible-micado.tar.gz
 
 ### Step 2: Specify cloud credential for instantiating MiCADO workers.
 
-MiCADO master will use the credentials against the cloud API to start/stop VM
+MiCADO Control Plane will use the credentials against the cloud API to start/stop VM
 instances (MiCADO workers) to host the application and to realize scaling.
-Credentials here should belong to the same cloud as where MiCADO master
+Credentials here should belong to the same cloud as where MiCADO Control Plane
 is running. We recommend making a copy of our predefined template and edit it.
 MiCADO expects the credential in a file, called *credentials-cloud-api.yml*
 before deployment. Please, do not modify the structure of the template!
@@ -47,7 +47,7 @@ see the section titled **Update Cloud Credentials** further down this page
 
 :   #### Optional: Added security
 
-    Credentials are stored in Kubernetes Secrets on the MiCADO Master. If
+    Credentials are stored in Kubernetes Secrets on the MiCADO Control Plane. If
     you wish to keep the credential data in an secure format on the Ansible
     Remote as well, you can use the [Ansible Vault](https://docs.ansible.com/ansible/2.4/vault.html)
     mechanism to to achieve this. Simply create the above file using Vault with the
@@ -69,7 +69,7 @@ see the section titled **Update Cloud Credentials** further down this page
 
 ### Step 3a: Specify security settings and credentials to access MiCADO
 
-MiCADO master will use these security-related settings and credentials to authenticate its users for accessing the REST API and Dashboard.
+MiCADO Control Plane will use these security-related settings and credentials to authenticate its users for accessing the REST API and Dashboard.
 
 ```
 cp sample-credentials-micado.yml credentials-micado.yml
@@ -114,13 +114,13 @@ Edit the file according to the [K3s documentation](https://docs.k3s.io/installat
 **Optionally you may use the Ansible Vault mechanism as described in Step 2 to protect the confidentiality and integrity of this file as well.**
 
 
-### Step 4: Launch an empty cloud VM instance for MiCADO master
+### Step 4: Launch an empty cloud VM instance for MiCADO Control Plane
 
 This new VM will host the MiCADO core services.
 
 **a)** Default port number for MiCADO service is `443`. Optionally, you can modify the port number stored by the variable called `web_listening_port` defined in the ansible config file called `project/host_vars/micado.yml`.
 
-**b)** Configure a cloud firewall settings which opens the following ports on the MiCADO master virtual machine:
+**b)** Configure a cloud firewall settings which opens the following ports on the MiCADO Control Plane virtual machine:
 
 |Protocol| Port(s)     |  Service           |
 |--------|-------------|--------------------|
@@ -135,7 +135,7 @@ This new VM will host the MiCADO core services.
 
 **c)** Finally, launch the virtual machine with the proper settings (capacity, ssh keys, firewall): use any of aws, ec2, nova, etc command-line tools or web interface of your target cloud to launch a new VM. We recommend a VM with 2 cores, 4GB RAM, 20GB disk. Make sure you can ssh to it (password-free i.e. ssh public key is deployed) and your user is able to sudo (to install MiCADO as root). Store its IP address which will be referred as `IP` in the following steps.
 
-### Step 5: Customize the inventory file for the MiCADO master
+### Step 5: Customize the inventory file for the MiCADO Control Plane
 
 We recommend making a copy of our predefined template and edit it. Use the template inventory file, called sample-hosts.yml for customisation.
 
@@ -147,8 +147,8 @@ edit hosts.yml
 
 Edit the `hosts.yml` file to set the variables. The following parameters under the key **micado-target** can be updated:
 
-* **ansible_host**: specifies the publicly reachable ip address of the target machine where you intend to build/deploy a MiCADO Master or build a MiCADO Worker. Set the public or floating ``IP`` of the master regardless the deployment method is remote or local. The ip specified here is used by the Dashboard for webpage redirection as well
-* **ansible_connection**: specifies how the target host can be reached. Use "ssh" for remote or "local" for local installation. In case of remote installation, make sure you can authenticate yourself against MiCADO master. We recommend to deploy your public ssh key on MiCADO master before starting the deployment
+* **ansible_host**: specifies the publicly reachable ip address of the target machine where you intend to build/deploy a MiCADO Control Plane or build a MiCADO Worker. Set the public or floating ``IP`` of the master regardless the deployment method is remote or local. The ip specified here is used by the Dashboard for webpage redirection as well
+* **ansible_connection**: specifies how the target host can be reached. Use "ssh" for remote or "local" for local installation. In case of remote installation, make sure you can authenticate yourself against MiCADO Control Plane. We recommend to deploy your public ssh key on MiCADO Control Plane before starting the deployment
 * **ansible_user**: specifies the name of your sudoer account, defaults to "ubuntu"
 * **ansible_become**: specifies if account change is needed to become root, defaults to "True"
 * **ansible_become_method**: specifies which command to use to become superuser, defaults to "sudo"
@@ -167,7 +167,7 @@ A few parameters in *project/host_vars/micado.yml* can be fine tuned before depl
 
 - **grafana_admin_pwd**: The string defined here will be the password for Grafana administrator.
 
-- **web_listening_port**: Port number of the dasboard on MiCADO master. Default is 443.
+- **web_listening_port**: Port number of the dasboard on MiCADO Control Plane. Default is 443.
 
 - **web_session_timeout**: Timeout value in seconds for the Dashboard. Default is 600.
 
@@ -177,9 +177,9 @@ A few parameters in *project/host_vars/micado.yml* can be fine tuned before depl
 
 *Note. MiCADO supports running both Occopus & Terraform on the same Master, if desired*
 
-### Step 7: Start the installation of MiCADO master
+### Step 7: Start the installation of MiCADO Control Plane
 
-Run the following command to build and initalise a MiCADO master node on the empty VM you launched in Step 4 and pointed to in *hosts.yml* Step 5.
+Run the following command to build and initalise a MiCADO Control Plane node on the empty VM you launched in Step 4 and pointed to in *hosts.yml* Step 5.
 
 ```
 cd playbook/
@@ -195,16 +195,16 @@ ansible-playbook -i inventory/hosts.yml project/micado.yml --ask-vault-pass
 
 :   #### Optional: Build & Start Roles
 
-    Optionally, you can split the deployment of your MiCADO Master in two. The `build` tags prepare the node will all the necessary dependencies, libraries and images necessary for operation. The `start` tags intialise the cluster and all the MiCADO core components.
+    Optionally, you can split the deployment of your MiCADO Control Plane in two. The `build` tags prepare the node will all the necessary dependencies, libraries and images necessary for operation. The `start` tags intialise the cluster and all the MiCADO core components.
 
-    You can clone the drive of a **"built"** MiCADO Master (or otherwise make an image from it) to be reused again and again. This will greatly speed up the deployment of future instances of MiCADO.
+    You can clone the drive of a **"built"** MiCADO Control Plane (or otherwise make an image from it) to be reused again and again. This will greatly speed up the deployment of future instances of MiCADO.
 
-    Running the following command will ``build`` a MiCADO Master node on an empty Ubuntu VM.
+    Running the following command will ``build`` a MiCADO Control Plane node on an empty Ubuntu VM.
 
     ```
     ansible-playbook -i inventory/hosts.yml project/micado.yml --tags build
     ```
-    You can then run the following command to ``start`` any **"built"** MiCADO Master node which will initialise and launch the core components for operation.
+    You can then run the following command to ``start`` any **"built"** MiCADO Control Plane node which will initialise and launch the core components for operation.
 
     ```
     ansible-playbook -i inventory/hosts.yml project/micado.yml --tags start

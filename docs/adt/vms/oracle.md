@@ -9,7 +9,7 @@ be set to Terraform as in the example below under ``context``.
 
 **Note** that OCI's Ubuntu VM images feature a number of strict ``iptables``
 rules, which will restrict normal communnication between worker nodes and the
-MiCADO Master. To resolve this issue, it is important to include the VM
+MiCADO Control Plane. To resolve this issue, it is important to include the VM
 contextualisation commands that can be seen in the example below.
 
 
