@@ -1,0 +1,45 @@
+site_name: MiCADO
+repo_url: https://github.com/micado-scale/ansible-micado
+theme:
+  name: material
+  logo: img/micado-fav.png
+  favicon: img/micado-fav.png
+  palette:
+    primary: deep purple
+    accent: yellow
+  features:
+    - content.tabs.link
+    - content.code.copy
+    - navigation.expand
+    - navigation.indexes
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+nav:
+  - MiCADO: index.md
+  - Install:
+    - install/index.md
+    - Requirements: install/requirements.md
+    - Quick Start: install/quick-start.md
+    - CLI Install: install/cli-install.md
+    - Ansible Install: install/ansible-install.md
+  - Demos:
+    - demos/index.md
+
+markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.details
+  - admonition
+  - attr_list
+  - def_list
+  - swaggermarkdown:
+      file: tools/swagger.json
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
