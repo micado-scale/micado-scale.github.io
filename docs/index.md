@@ -1,10 +1,10 @@
 # MiCADO
 
-![image](https://user-images.githubusercontent.com/35102795/231382541-e0b3cfcc-258d-4c04-874a-0d10d1056151.png)
+![image](img/micado-logo.png)
 
-Originally developed in Project [COLA](https://project-cola.eu/). MiCADO is currently used across multiple European projects. Development is ongoing at [this github repository](https://github.com/micado-scale).
+Originally developed in Project [COLA](https://project-cola.eu/). MiCADOscale, or simply MiCADO, is currently used across multiple European projects. Development is ongoing at [this github repository](https://github.com/micado-scale).
 
-## Intro
+## About
 
 MiCADO is a generic execution and auto-scaling framework for OCI containers, orchestrated by Kubernetes. It supports autoscaling at two levels. At virtual machine (VM) level, a built-in Kubernetes cluster is dynamically extended or reduced by adding/removing cloud virtual machines. At container level, the number of replicas tied to a specific Kubernetes Deployment can be increased/decreased.
 
