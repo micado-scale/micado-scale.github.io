@@ -8,9 +8,8 @@ and is described in detail in this section. Some familiarity with YAML is helpfu
 
 An ADT describes the following aspects of an application, which are documented individually:
 
-- [Containers](containers.md)
-- Volumes
-- Configs
+- [Containers](containers/)
+- [Volumes & Configs](containers/volumes.md)
 - [Virtual Machines](vms.md)
 - [Monitoring](monitoring.md)
 - [Scaling](scaling.md)

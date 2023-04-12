@@ -128,7 +128,7 @@ This new VM will host the MiCADO core services.
 | TCP    |  22         | SSH                |
 | TCP    |  6443       | kube-apiserver     |
 | TCP    |  10250      | metrics            |
-| UDP    |  51280      | wireguard (Pod-Pod)|
+| UDP    |  51820      | wireguard (Pod-Pod)|
 
    **NOTE:** `web listening port` should match with the actual value specified in Step 4a.
 
