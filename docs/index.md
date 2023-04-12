@@ -1,5 +1,7 @@
 # MiCADO
 
+![image](https://user-images.githubusercontent.com/35102795/231382541-e0b3cfcc-258d-4c04-874a-0d10d1056151.png)
+
 Originally developed in Project [COLA](https://project-cola.eu/). MiCADO is currently used across multiple European projects. Development is ongoing at [this github repository](https://github.com/micado-scale).
 
 ## Intro
