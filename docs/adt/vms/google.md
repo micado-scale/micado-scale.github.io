@@ -1,4 +1,4 @@
-# GCE
+# Google Compute Engine
 
 ## Overview
 

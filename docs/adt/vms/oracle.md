@@ -1,4 +1,4 @@
-# OCI
+# Oracle Cloud Infrastructure
 
 ## Overview
 
