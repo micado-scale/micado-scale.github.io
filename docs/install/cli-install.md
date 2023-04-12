@@ -214,10 +214,39 @@ micado config registry
 
 ### Configure Additional Settings
 
-Several additional options can be configured using the below command.
+Several additional options can be configured. The command below will open
+the additional settings file in your preferred editor.
 
 ```bash
 micado config settings
 ```
 
-They will be detailed here.
+`web_listening_port`{ #web-listening-port }
+
+:   *integer.* Port number of the dasboard on MiCADO master. Defaults to 443.
+
+`enable_occopus` { #enable-occopus }
+
+:   *boolean.* Install and enable Occopus for cloud orchestration. Defaults to False.
+
+`enable_terraform` { #enable-terraform }
+
+:   *boolean.* Install and enable Terraform for cloud orchestration. Defaults to True.
+
+`enable_optimizer`
+
+:   *boolean.* Setting this parameter to True enables the deployment of the Optimizer module, to perform
+    more advanced scaling. Note this component is still in beta. Defaults to False.
+
+`disable_worker_updates`
+
+:   *boolean.* Setting this parameter to False enables periodic software updates of the worker nodes. Note this may
+    have an adverse effect on worker node start times. Defaults to True.
+
+`grafana_admin_pwd`
+
+:   *string.* Configure the password for the Grafana administrator. Required for confiuring Grafana dashboards.
+
+`web_session_timeout`
+
+:   *integer.* Timeout value in seconds for the Dashboard. Defaults to 600.
