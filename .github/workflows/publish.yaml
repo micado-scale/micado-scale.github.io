@@ -6,7 +6,9 @@ name: Publish site
 on:
   release:
     types: [published]
-
+  push:
+    branches:
+      - main
 
 jobs:
 
