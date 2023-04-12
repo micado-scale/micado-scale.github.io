@@ -24,8 +24,31 @@ nav:
     - Quick Start: install/quick-start.md
     - CLI Install: install/cli-install.md
     - Ansible Install: install/ansible-install.md
+  - Usage:
+    - usage/index.md
+    - Dashboard: usage/dashboard.md
+    - REST API: usage/restapi.md
+    - Admin: usage/admin.md
+  - ADT:
+    - adt/index.md
+    - Containers:
+      - adt/containers/index.md
+      - Communication: adt/containers/services.md
+      - Exposure: adt/containers/expose.md
+      - Volumes: adt/containers/volumes.md
+      - Sidecars: adt/containers/sidecars.md
+      - Advanced: adt/containers/custom.md
+      - API Reference: adt/containers/specification.md
+    - Virtual Machines: adt/vms.md
+    - Monitoring: adt/monitoring.md
+    - Scaling: adt/scaling.md
+    - Networking: adt/networking.md
+    - Secrets: adt/secrets.md
   - Demos:
     - demos/index.md
+  - Release Notes:
+    - What's New: changelog/index.md
+    - Changelog: changelog/changelog.md
 
 markdown_extensions:
   - pymdownx.tasklist:
