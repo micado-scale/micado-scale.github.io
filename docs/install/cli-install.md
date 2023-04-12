@@ -110,6 +110,8 @@ micado config cloud
         email: user@example.com
         password: s3cur3_p4ssw0rd
     ```
+    !!! tip
+        These can be [updated](/usage/admin/#update-cloud-registry-logins) on an existing cluster.
 
 The following clouds may require some additional explanation:
 
@@ -185,9 +187,8 @@ micado config web
 
 ### Configure Container Registries
 
-MiCADO uses **containerd** as the container runtime. The container
-registries are configured via the the K3s `registries.yaml` file,
-which is very well documented at
+Container registry logins and mirrors are configured via the
+K3s `registries.yaml` file, which is very well documented at
 [this link](https://docs.k3s.io/installation/private-registry). The
 following command will open that file for editing.
 
@@ -205,6 +206,8 @@ micado config registry
           username: USERNAME
           password: PASSWORD
     ```
+    !!! tip
+        These can be [updated](/usage/admin/#update-cloud-registry-logins) on an existing cluster.
 
 ??? warning
     This file will be stored as a Kubernetes secret on the MiCADO Control Plane.

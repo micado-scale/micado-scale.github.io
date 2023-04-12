@@ -3,29 +3,31 @@
 This four step guide aims to get you started with MiCADO. For more detail on this installation
 method, please see [CLI Install](cli-install.md).
 
+## Pre-requisites
+
 First, provision a virtual machine in the cloud according to the [requirements](requirements.md#micado-control-plane).
 
-Run the following commands from any device or instance that has SSH access to the newly provisioned instance. This can be a local device, or remote instance.
+The following commands can be run from any device or instance that has Python 3.8 or higher, and SSH access to the newly provisioned instance. This can be a local device, or remote instance.
 
+## Steps
 
-:   **1.** Install `micado-client`.
+:   ### Install `micado-client`
 
     ```bash
     pip install micado-client
     ```
-<br>
 
-:   **2.** Initialise a new directory for preparing the configuration. 
-    <br>*The below example creates a new directory called* `micado_conf_dir`
+:   ### Initialise a new config directory
+    *The below example creates a new directory called* `micado_conf_dir`
 
     ```bash
     micado init micado_conf_dir
     cd micado_conf_dir
 
     ```
-<br>
 
-:   **3.** Configure your deployment. It is mandatory to configure `hosts`.
+:   ### Configure your deployment
+    *It is mandatory to configure `hosts`*
 
     === "hosts"
         ```bash
@@ -57,7 +59,7 @@ Run the following commands from any device or instance that has SSH access to th
         <br>Sample snippets of each config file are shown below.
 
     === "hosts"
-        **Mandatory**. Configure IP and username for SSH access to the control plane node.<br>
+        Configure IP and username for SSH access to the control plane node.<br>
         _If your SSH private key is **not** at a default path (e.g. .ssh/id_rsa) also specify path here_
 
         ```yaml
@@ -122,7 +124,7 @@ Run the following commands from any device or instance that has SSH access to th
         enable_multicloud: False
         ```
 
-: **4.** Deploy the MiCADO control plane.
+: ### Deploy the MiCADO control plane
 
     ```bash
     micado deploy
