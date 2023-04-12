@@ -230,39 +230,3 @@ ansible-playbook -i inventory/hosts.yml project/micado.yml --ask-vault-pass
     ```
     ansible-playbook -i inventory/hosts.yml project/micado.yml --tags all,cloudsigma
     ```
-
-
-## After deployment
-
-
-Once the deployment has successfully finished, you can proceed with
-
-* visiting the :ref:`dashboard`
-* using the :ref:`restapi`
-* playing with the :ref:`tutorials`
-* creating your :ref:`applicationdescription`
-
-
-### Update Cloud Credentials
-
-
-It is possible to modify cloud credentials on an already deployed MiCADO
-Master. Simply make the necessary changes to the appropriate credentials
-file (using *ansible-vault* if desired) and then run the following playbook
-command:
-
-```
-ansible-playbook -i inventory/hosts.yml project/micado.yml --tags update-auth
-```
-
-### Check the logs
-
-All logs are now available via the Kubernetes Dashboard on the MiCADO Dashboard. You can navigate to them by changing the **namespace** to `micado-system` or `micado-worker` and then accessing the logs in the **Pods** section
-You can also SSH into MiCADO master and check the logs at any point after MiCADO is succesfully deployed. All logs are kept under `/var/log/micado` and are organised by components. Scaling decisions, for example, can be inspected under `/var/log/micado/policykeeper`
-
-### Accessing user-defined services
-
-In case your application contains a container exposing a service, you will have to ensure the following to access it.
-
-* First set **nodePort: xxxxx** (where xxxxx is a port in range 30000-32767) in the **properties: ports:** TOSCA description of your docker container. More information on this in the ADT
-* The container will be accessible at *<IP>:<port>* . Both, the IP and the port values can be extracted from the Kubernetes Dashboard (in case you forget it). The **IP** can be found under *Nodes > my_micado_vm > Addresses* menu, while the **port** can be found under *Discovery and load balancing > Services > my_app > Internal endpoints* menu.
