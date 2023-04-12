@@ -39,7 +39,15 @@ nav:
       - Sidecars: adt/containers/sidecars.md
       - Advanced: adt/containers/custom.md
       - API Reference: adt/containers/specification.md
-    - Virtual Machines: adt/vms.md
+    - Virtual Machines:
+      - adt/vms/index.md
+      - OpenStack: adt/vms/openstack.md
+      - EC2: adt/vms/ec2.md
+      - CloudBroker: adt/vms/cloudbroker.md
+      - CloudSigma: adt/vms/cloudsigma.md
+      - Azure: adt/vms/azure.md
+      - Google: adt/vms/google.md
+      - Oracle: adt/vms/oracle.md
     - Monitoring: adt/monitoring.md
     - Scaling: adt/scaling.md
     - Networking: adt/networking.md
