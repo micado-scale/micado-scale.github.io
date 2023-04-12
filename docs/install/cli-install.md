@@ -115,10 +115,10 @@ micado config cloud
 
 The following clouds may require some additional explanation:
 
-- OpenStack
-- Google Cloud
-- Microsoft Azure
-- Oracle Cloud Infrastructure
+- [OpenStack](/adt/vms/openstack/#authentication)
+- [Google Cloud](/adt/vms/google/#authentication)
+- [Microsoft Azure](/adt/vms/azure/#authentication)
+- [Oracle Cloud Infrastructure](/adt/vms/oracle/#authentication)
 
 ???+ warning
     This file will be stored as a Kubernetes secret on the MiCADO Control Plane.
