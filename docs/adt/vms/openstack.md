@@ -8,8 +8,8 @@ template below. MiCADO **requires** image_id, flavor_name, project_id and
 network_id to instantiate a VM through *Nova*.
 
 Both **Occopus and Terraform** support Nova provisioning. To use Terraform,
-enable it as described in :ref:`customize` and adjust the interfaces section
-accordingly.
+[enable it](/install/cli-install/#enable-terraform) and adjust the interfaces section accordingly.
+
 
 ```yaml
 YOUR-VIRTUAL-MACHINE:

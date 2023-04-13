@@ -8,8 +8,7 @@ instantiate a VM through *EC2*.
 
 **Terraform** supports provisioning on AWS EC2, and **Occopus** supports
 both AWS EC2 and OpenNebula EC2. To use Terraform,
-[enable it](/install/cli-install/#enable-terraform) and adjust the interfaces
-section accordingly.
+[enable it](/install/cli-install/#enable-terraform) and adjust the interfaces section accordingly.
 
 ```yaml
 YOUR-VIRTUAL-MACHINE:

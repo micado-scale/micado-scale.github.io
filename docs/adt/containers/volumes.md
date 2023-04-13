@@ -11,7 +11,7 @@
 
 For persisting configurations and data across different deployments, we support [Kubernetes Volumes](https://kubernetes.io/docs/concepts/storage/volumes/) and [Kubernetes ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/). 
 
-Volumes and ConfigMaps are described under `node_templates` of a `topology_template`, and get their own description, just like a container or virtual machine. We can then reference a volume or config under the `requirements` section of a container, in the same way we [specify a host](k8s.md#choosing-a-host). Here's an example:
+Volumes and ConfigMaps are described under `node_templates` of a `topology_template`, and get their own description, just like a container or virtual machine. We can then reference a volume or config under the `requirements` section of a container, in the same way we [specify a host](index.md#choosing-a-host). Here's an example:
 
 ```yaml
 node_templates:

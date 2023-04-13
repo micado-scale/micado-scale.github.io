@@ -4,8 +4,8 @@
 
 To instantiate MiCADO workers on a cloud through Oracle interface, please use
 the template below. Currently, only **Terraform** has support for Oracle,
-so Terraform must be enabled as in :ref:`customize`, and the interface must
-be set to Terraform as in the example below under ``context``.
+so [Terraform must be enabled](/install/cli-install/#enable-terraform), and the interface must
+be set to Terraform as in the example below.
 
 **Note** that OCI's Ubuntu VM images feature a number of strict ``iptables``
 rules, which will restrict normal communnication between worker nodes and the

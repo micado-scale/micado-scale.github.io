@@ -153,7 +153,7 @@ app-container:
 
 ## More properties
 
-You will likely need to provide more customisation for your container than simply specifying an image. The available list of properties is available in the [official documentation for MiCADO](https://micado-scale.readthedocs.io/en/latest/application_description.html#properties).
+You will likely need to provide more customisation for your container than simply specifying an image. The available list of properties is available in the [API Reference](specification.md) section.
 
 ### Switching it up
 
