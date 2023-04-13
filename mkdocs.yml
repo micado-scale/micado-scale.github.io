@@ -19,7 +19,9 @@ theme:
     - navigation.top
     - toc.follow
 nav:
-  - MiCADO: index.md
+  - MiCADO:
+    - index.md
+    - Architecture: arch.md
   - Install:
     - install/index.md
     - Requirements: install/requirements.md
