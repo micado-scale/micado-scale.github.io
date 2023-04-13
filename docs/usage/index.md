@@ -2,8 +2,11 @@
 
 Once your MiCADO cluster is prepared, you can:
 
-* Visit the [dashboard](dashboard.md)
-* Use the REST API
-* Play around with the [demos](/demos/)
-* Describe your application as an [ADT](/adt/)
+* Visit the [Dashboard](dashboard.md)
+* Use the [REST API](restapi.md)
 * [Administrate](admin.md) the cluster
+
+To start running applications with MiCADO, you can:
+
+* Play around with the [demos](/demos/)
+* Describe your application in an [ADT](/adt/)
