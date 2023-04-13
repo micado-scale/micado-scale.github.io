@@ -11,11 +11,13 @@ theme:
     - content.tabs.link
     - content.code.copy
     - navigation.expand
+    - navigation.sections
     - navigation.indexes
     - navigation.instant
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
+    - toc.follow
 nav:
   - MiCADO: index.md
   - Install:
@@ -29,7 +31,7 @@ nav:
     - Dashboard: usage/dashboard.md
     - REST API: usage/restapi.md
     - Admin: usage/admin.md
-  - ADT:
+  - Application Description:
     - adt/index.md
     - Containers:
       - adt/containers/index.md
@@ -48,10 +50,12 @@ nav:
       - Azure: adt/vms/azure.md
       - Google: adt/vms/google.md
       - Oracle: adt/vms/oracle.md
-    - Monitoring: adt/monitoring.md
-    - Scaling: adt/scaling.md
-    - Networking: adt/networking.md
-    - Secrets: adt/secrets.md
+    - Policies:
+      - adt/policies/index.md
+      - Monitoring: adt/policies/monitoring.md
+      - Scaling: adt/policies/scaling.md
+      - Networking: adt/policies/networking.md
+      - Secrets: adt/policies/secrets.md
   - Demos:
     - demos/index.md
   - Release Notes:
