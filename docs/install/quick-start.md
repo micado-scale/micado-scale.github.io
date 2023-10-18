@@ -127,7 +127,7 @@ The following commands can be run from any device or instance that has Python 3.
 : ### Deploy the MiCADO control plane
 
     ```bash
-    micado deploy
+    micado up
     ```
 
 That's it! Have a look at our [demos](/demos/) to start deploying applications.

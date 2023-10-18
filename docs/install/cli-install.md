@@ -253,3 +253,12 @@ micado config settings
 `web_session_timeout`
 
 :   *integer.* Timeout value in seconds for the Dashboard. Defaults to 600.
+
+### Deploy MiCADO
+
+After everything has been configured, you can install MiCADO to the remote
+instance, which will launch the cluster.
+
+```bash
+micado up
+```
