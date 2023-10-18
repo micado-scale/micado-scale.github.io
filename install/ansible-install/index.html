@@ -1,0 +1,1777 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../cli-install/">
+      
+      
+        <link rel="next" href="../../usage/">
+      
+      <link rel="icon" href="../../img/micado-fav.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.4">
+    
+    
+      
+        <title>Ansible Install - MiCADO</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.240905d7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="yellow">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#install-with-ansible" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MiCADO" class="md-header__button md-logo" aria-label="MiCADO" data-md-component="logo">
+      
+  <img src="../../img/micado-fav.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MiCADO
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ansible Install
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/micado-scale/ansible-micado" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        MiCADO
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Install
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../usage/" class="md-tabs__link">
+        Usage
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../adt/" class="md-tabs__link">
+        Application Description
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../demos/" class="md-tabs__link">
+        Demos
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MiCADO" class="md-nav__button md-logo" aria-label="MiCADO" data-md-component="logo">
+      
+  <img src="../../img/micado-fav.png" alt="logo">
+
+    </a>
+    MiCADO
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/micado-scale/ansible-micado" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">MiCADO</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          MiCADO
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arch/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Install</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Install
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-install/" class="md-nav__link">
+        CLI Install
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Ansible Install
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Ansible Install
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-download-the-ansible-playbook" class="md-nav__link">
+    Step 1: Download the ansible playbook
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-specify-cloud-credential-for-instantiating-micado-workers" class="md-nav__link">
+    Step 2: Specify cloud credential for instantiating MiCADO workers.
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Specify cloud credential for instantiating MiCADO workers.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-added-security" class="md-nav__link">
+    Optional: Added security
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3a-specify-security-settings-and-credentials-to-access-micado" class="md-nav__link">
+    Step 3a: Specify security settings and credentials to access MiCADO
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3b-optional-specify-credentials-to-use-private-docker-registries" class="md-nav__link">
+    Step 3b: (Optional) Specify credentials to use private Docker registries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-launch-an-empty-cloud-vm-instance-for-micado-control-plane" class="md-nav__link">
+    Step 4: Launch an empty cloud VM instance for MiCADO Control Plane
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-customize-the-inventory-file-for-the-micado-control-plane" class="md-nav__link">
+    Step 5: Customize the inventory file for the MiCADO Control Plane
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-customize-the-deployment" class="md-nav__link">
+    Step 6: Customize the deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-start-the-installation-of-micado-control-plane" class="md-nav__link">
+    Step 7: Start the installation of MiCADO Control Plane
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 7: Start the installation of MiCADO Control Plane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-build-start-roles" class="md-nav__link">
+    Optional: Build &amp; Start Roles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-cloud-specific-fixes" class="md-nav__link">
+    Advanced: Cloud specific fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../usage/">Usage</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/dashboard/" class="md-nav__link">
+        Dashboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/restapi/" class="md-nav__link">
+        REST API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/admin/" class="md-nav__link">
+        Admin
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../adt/">Application Description</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Application Description
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../adt/containers/">Containers</a>
+          
+            <label for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Containers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/containers/services/" class="md-nav__link">
+        Communication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/containers/expose/" class="md-nav__link">
+        Exposure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/containers/volumes/" class="md-nav__link">
+        Volumes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/containers/sidecars/" class="md-nav__link">
+        Sidecars
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/containers/custom/" class="md-nav__link">
+        Advanced
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/containers/specification/" class="md-nav__link">
+        API Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../adt/vms/">Virtual Machines</a>
+          
+            <label for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Virtual Machines
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/vms/openstack/" class="md-nav__link">
+        OpenStack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/vms/ec2/" class="md-nav__link">
+        EC2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/vms/cloudbroker/" class="md-nav__link">
+        CloudBroker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/vms/cloudsigma/" class="md-nav__link">
+        CloudSigma
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/vms/azure/" class="md-nav__link">
+        Azure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/vms/google/" class="md-nav__link">
+        Google
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/vms/oracle/" class="md-nav__link">
+        Oracle
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../adt/policies/">Policies</a>
+          
+            <label for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Policies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/policies/monitoring/" class="md-nav__link">
+        Monitoring
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/policies/scaling/" class="md-nav__link">
+        Scaling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/policies/networking/" class="md-nav__link">
+        Networking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adt/policies/secrets/" class="md-nav__link">
+        Secrets
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../demos/">Demos</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Demos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demos/stressng/" class="md-nav__link">
+        stressng
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../changelog/">Release Notes</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Release Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-download-the-ansible-playbook" class="md-nav__link">
+    Step 1: Download the ansible playbook
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-specify-cloud-credential-for-instantiating-micado-workers" class="md-nav__link">
+    Step 2: Specify cloud credential for instantiating MiCADO workers.
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Specify cloud credential for instantiating MiCADO workers.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-added-security" class="md-nav__link">
+    Optional: Added security
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3a-specify-security-settings-and-credentials-to-access-micado" class="md-nav__link">
+    Step 3a: Specify security settings and credentials to access MiCADO
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3b-optional-specify-credentials-to-use-private-docker-registries" class="md-nav__link">
+    Step 3b: (Optional) Specify credentials to use private Docker registries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-launch-an-empty-cloud-vm-instance-for-micado-control-plane" class="md-nav__link">
+    Step 4: Launch an empty cloud VM instance for MiCADO Control Plane
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-customize-the-inventory-file-for-the-micado-control-plane" class="md-nav__link">
+    Step 5: Customize the inventory file for the MiCADO Control Plane
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-customize-the-deployment" class="md-nav__link">
+    Step 6: Customize the deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-start-the-installation-of-micado-control-plane" class="md-nav__link">
+    Step 7: Start the installation of MiCADO Control Plane
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 7: Start the installation of MiCADO Control Plane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-build-start-roles" class="md-nav__link">
+    Optional: Build &amp; Start Roles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-cloud-specific-fixes" class="md-nav__link">
+    Advanced: Cloud specific fixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="install-with-ansible">Install with Ansible</h1>
+<p>If you are familiar with Ansible and Ansible Playbooks, you are welcome to
+configure and run the Playbooks without the CLI. The steps below provide
+a rough outline to the required configurations.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This page is currently under development, and sections
+may be outdated or incorrect.</p>
+</div>
+<h2 id="installation">Installation</h2>
+<p>Perform the following steps either on your local machine or on MiCADO Control Plane depending on the installation method.</p>
+<h3 id="step-1-download-the-ansible-playbook">Step 1: Download the ansible playbook</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--output<span class="w"> </span>ansible-micado.tar.gz<span class="w"> </span>-L<span class="w"> </span>https://github.com/micado-scale/ansible-micado/releases/download/v0.12.0/micado-v0.12.0.tar.gz
+tar<span class="w"> </span>-zxvf<span class="w"> </span>ansible-micado.tar.gz
+</code></pre></div>
+<h3 id="step-2-specify-cloud-credential-for-instantiating-micado-workers">Step 2: Specify cloud credential for instantiating MiCADO workers.</h3>
+<p>MiCADO Control Plane will use the credentials against the cloud API to start/stop VM
+instances (MiCADO workers) to host the application and to realize scaling.
+Credentials here should belong to the same cloud as where MiCADO Control Plane
+is running. We recommend making a copy of our predefined template and edit it.
+MiCADO expects the credential in a file, called <em>credentials-cloud-api.yml</em>
+before deployment. Please, do not modify the structure of the template!</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>playbook/project/credentials
+cp<span class="w"> </span>sample-credentials-cloud-api.yml<span class="w"> </span>credentials-cloud-api.yml
+edit<span class="w"> </span>credentials-cloud-api.yml
+</code></pre></div>
+<p>Edit <strong>credentials-cloud-api.yml</strong> to add cloud credentials. You will find
+predefined sections in the template for each cloud interface type MiCADO
+supports. It is recommended to fill only the section belonging to your
+target cloud.</p>
+<p><strong>NOTE</strong> If you are using Google Cloud, you must replace or fill the
+<em>credentials-gce.json</em> with your downloaded service account key file.</p>
+<dl>
+<dt>It is possible to modify cloud credentials after MiCADO has been deployed,</dt>
+<dt>see the section titled <strong>Update Cloud Credentials</strong> further down this page</dt>
+<dd>
+<h4 id="optional-added-security">Optional: Added security</h4>
+<p>Credentials are stored in Kubernetes Secrets on the MiCADO Control Plane. If
+you wish to keep the credential data in an secure format on the Ansible
+Remote as well, you can use the <a href="https://docs.ansible.com/ansible/2.4/vault.html">Ansible Vault</a>
+mechanism to to achieve this. Simply create the above file using Vault with the
+following command</p>
+<div class="highlight"><pre><span></span><code>ansible-vault create credentials-cloud-api.yml
+</code></pre></div>
+<p>This will launch the editor defined in the <code>$EDITOR</code> environment variable to make changes to
+the file. If you wish to make any changes to the previously encrypted file, you can use the command</p>
+<div class="highlight"><pre><span></span><code>ansible-vault edit credentials-cloud-api.yml
+</code></pre></div>
+<p>Be sure to see the note about deploying a playbook with vault encrypted files
+in <strong>Step 7</strong>.</p>
+</dd>
+</dl>
+<h3 id="step-3a-specify-security-settings-and-credentials-to-access-micado">Step 3a: Specify security settings and credentials to access MiCADO</h3>
+<p>MiCADO Control Plane will use these security-related settings and credentials to authenticate its users for accessing the REST API and Dashboard.</p>
+<div class="highlight"><pre><span></span><code>cp sample-credentials-micado.yml credentials-micado.yml
+edit credentials-micado.yml
+</code></pre></div>
+<dl>
+<dt>Specify the provisioning method for the x509 keypair used for TLS encryption of the management interface in the <code>tls</code> subtree:</dt>
+<dd>
+<ul>
+<li>
+<p>The <strong>self-signed</strong> option generates a new keypair with the specified
+hostname as the subject / CN ('micado-master' by default, but configurable in
+<strong>micado-master.yml</strong>).</p>
+<p>Two Subject Alternative Name (SAN) entries are also
+added by the configuration file at
+<code>roles/micado_master/start/templates/zorp/san.cnf</code>:</p>
+<ul>
+<li>DNS: <em>specified hostname</em></li>
+<li>IP: <em>specified IP</em></li>
+</ul>
+<p>The generated certificate file is located at:
+<code>/var/lib/micado/zorp/config/ssl.pem</code></p>
+</li>
+</ul>
+</dd>
+<dd>
+<ul>
+<li>
+<p>The <strong>user-supplied</strong> option lets the user add the keypair as plain multiline strings (in unencrypted format) in the ansible_user_data.yml file under the 'cert' and 'key' subkeys respectively.</p>
+<p>Specify the default username and password for the administrative user in the <code>authentication</code> subtree.</p>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Optionally you may use the Ansible Vault mechanism as described in Step 2 to protect the confidentiality and integrity of this file as well.</strong></p>
+<h3 id="step-3b-optional-specify-credentials-to-use-private-docker-registries">Step 3b: (Optional) Specify credentials to use private Docker registries</h3>
+<p>Set the Docker login credentials of your private Docker registry in which your private containers are stored. We recommend making a copy of our predefined template and edit it. MiCADO expects the docker registry credentials in a file, called credentials-docker-registry.yml. Please, do not modify the structure of the template!</p>
+<div class="highlight"><pre><span></span><code>cp sample-credentials-registries.yml credentials-registries.yml
+edit credentials-registries.yml
+</code></pre></div>
+<p>Edit the file according to the <a href="https://docs.k3s.io/installation/private-registry">K3s documentation</a></p>
+<p><strong>Optionally you may use the Ansible Vault mechanism as described in Step 2 to protect the confidentiality and integrity of this file as well.</strong></p>
+<h3 id="step-4-launch-an-empty-cloud-vm-instance-for-micado-control-plane">Step 4: Launch an empty cloud VM instance for MiCADO Control Plane</h3>
+<p>This new VM will host the MiCADO core services.</p>
+<p><strong>a)</strong> Default port number for MiCADO service is <code>443</code>. Optionally, you can modify the port number stored by the variable called <code>web_listening_port</code> defined in the ansible config file called <code>project/host_vars/micado.yml</code>.</p>
+<p><strong>b)</strong> Configure a cloud firewall settings which opens the following ports on the MiCADO Control Plane virtual machine:</p>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Port(s)</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TCP</td>
+<td>443*</td>
+<td>web listening port</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>22</td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>6443</td>
+<td>kube-apiserver</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>10250</td>
+<td>metrics</td>
+</tr>
+<tr>
+<td>UDP</td>
+<td>51820</td>
+<td>wireguard (Pod-Pod)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE:</strong> <code>web listening port</code> should match with the actual value specified in Step 4a.</p>
+<p><strong>c)</strong> Finally, launch the virtual machine with the proper settings (capacity, ssh keys, firewall): use any of aws, ec2, nova, etc command-line tools or web interface of your target cloud to launch a new VM. We recommend a VM with 2 cores, 4GB RAM, 20GB disk. Make sure you can ssh to it (password-free i.e. ssh public key is deployed) and your user is able to sudo (to install MiCADO as root). Store its IP address which will be referred as <code>IP</code> in the following steps.</p>
+<h3 id="step-5-customize-the-inventory-file-for-the-micado-control-plane">Step 5: Customize the inventory file for the MiCADO Control Plane</h3>
+<p>We recommend making a copy of our predefined template and edit it. Use the template inventory file, called sample-hosts.yml for customisation.</p>
+<div class="highlight"><pre><span></span><code>cd playbook/inventory
+cp sample-hosts.yml hosts.yml
+edit hosts.yml
+</code></pre></div>
+<p>Edit the <code>hosts.yml</code> file to set the variables. The following parameters under the key <strong>micado-target</strong> can be updated:</p>
+<ul>
+<li><strong>ansible_host</strong>: specifies the publicly reachable ip address of the target machine where you intend to build/deploy a MiCADO Control Plane or build a MiCADO Worker. Set the public or floating <code>IP</code> of the master regardless the deployment method is remote or local. The ip specified here is used by the Dashboard for webpage redirection as well</li>
+<li><strong>ansible_connection</strong>: specifies how the target host can be reached. Use "ssh" for remote or "local" for local installation. In case of remote installation, make sure you can authenticate yourself against MiCADO Control Plane. We recommend to deploy your public ssh key on MiCADO Control Plane before starting the deployment</li>
+<li><strong>ansible_user</strong>: specifies the name of your sudoer account, defaults to "ubuntu"</li>
+<li><strong>ansible_become</strong>: specifies if account change is needed to become root, defaults to "True"</li>
+<li><strong>ansible_become_method</strong>: specifies which command to use to become superuser, defaults to "sudo"</li>
+<li><strong>ansible_python_interpreter</strong>: specifies the interpreter to be used for ansible on the target host, defaults to "/usr/bin/python3"</li>
+</ul>
+<p>Please, revise all the parameters, however in most cases the default values are correct.</p>
+<h3 id="step-6-customize-the-deployment">Step 6: Customize the deployment</h3>
+<p>A few parameters in <em>project/host_vars/micado.yml</em> can be fine tuned before deployment. They are as follows:</p>
+<ul>
+<li>
+<p><strong>enable_optimizer</strong>: Setting this parameter to True enables the deployment of the Optimizer module, to perform more advanced scaling. Default is True.</p>
+</li>
+<li>
+<p><strong>disable_worker_updates</strong>: Setting this parameter to False enables periodic software updates of the worker nodes. Default is True.</p>
+</li>
+<li>
+<p><strong>grafana_admin_pwd</strong>: The string defined here will be the password for Grafana administrator.</p>
+</li>
+<li>
+<p><strong>web_listening_port</strong>: Port number of the dasboard on MiCADO Control Plane. Default is 443.</p>
+</li>
+<li>
+<p><strong>web_session_timeout</strong>: Timeout value in seconds for the Dashboard. Default is 600.</p>
+</li>
+<li>
+<p><strong>enable_occopus</strong>: Install and enable Occopus for cloud orchestration. Default is True.</p>
+</li>
+<li>
+<p><strong>enable_terraform</strong>: Install and enable Terraform for cloud orchestration. Default is False.</p>
+</li>
+</ul>
+<p><em>Note. MiCADO supports running both Occopus &amp; Terraform on the same Master, if desired</em></p>
+<h3 id="step-7-start-the-installation-of-micado-control-plane">Step 7: Start the installation of MiCADO Control Plane</h3>
+<p>Run the following command to build and initalise a MiCADO Control Plane node on the empty VM you launched in Step 4 and pointed to in <em>hosts.yml</em> Step 5.</p>
+<div class="highlight"><pre><span></span><code>cd playbook/
+ansible-playbook -i inventory/hosts.yml project/micado.yml
+</code></pre></div>
+<p>If you have used Vault to encrypt your credentials, you have to add the path to your vault credentials to the command line as described in the <a href="https://docs.ansible.com/ansible/2.4/vault.html#providing-vault-passwords">Ansible Vault documentation</a> or provide it via command line using the command</p>
+<dl>
+<dt><div class="highlight"><pre><span></span><code>cd playbook/
+ansible-playbook -i inventory/hosts.yml project/micado.yml --ask-vault-pass
+</code></pre></div></dt>
+<dd>
+<h4 id="optional-build-start-roles">Optional: Build &amp; Start Roles</h4>
+<p>Optionally, you can split the deployment of your MiCADO Control Plane in two. The <code>build</code> tags prepare the node will all the necessary dependencies, libraries and images necessary for operation. The <code>start</code> tags intialise the cluster and all the MiCADO core components.</p>
+<p>You can clone the drive of a <strong>"built"</strong> MiCADO Control Plane (or otherwise make an image from it) to be reused again and again. This will greatly speed up the deployment of future instances of MiCADO.</p>
+<p>Running the following command will <code>build</code> a MiCADO Control Plane node on an empty Ubuntu VM.</p>
+<p><div class="highlight"><pre><span></span><code>ansible-playbook -i inventory/hosts.yml project/micado.yml --tags build
+</code></pre></div>
+You can then run the following command to <code>start</code> any <strong>"built"</strong> MiCADO Control Plane node which will initialise and launch the core components for operation.</p>
+<div class="highlight"><pre><span></span><code>ansible-playbook -i inventory/hosts.yml project/micado.yml --tags start
+</code></pre></div>
+</dd>
+<dd>
+<h4 id="advanced-cloud-specific-fixes">Advanced: Cloud specific fixes</h4>
+<p>Certain cloud service providers may provide Virtual Machine images that are
+incompatible with the normal MiCADO installation. Where possible, we have included
+automated fixes for these, which can be applied using the <code>--tags</code> syntax of Ansible.
+See below for details:</p>
+<p><strong>CloudSigma</strong></p>
+<p>At the time of writing, the CloudSigma Ubuntu 20.04 virtual machine disk images
+are improperly configured, and SSL errors may appear during installation of MiCADO. A special
+task has been added to MiCADO to automate the fix when installing on CloudSigma instances.</p>
+<p>Simply use the following command instead of the command provided above. Notice the added tags</p>
+<div class="highlight"><pre><span></span><code>ansible-playbook -i inventory/hosts.yml project/micado.yml --tags all,cloudsigma
+</code></pre></div>
+</dd>
+</dl>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "content.code.copy", "navigation.expand", "navigation.sections", "navigation.indexes", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.19047be9.min.js"></script>
+      
+    
+  </body>
+</html>
