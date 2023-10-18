@@ -31,6 +31,7 @@ nav:
   - Usage:
     - usage/index.md
     - Dashboard: usage/dashboard.md
+    - CLI: usage/cli.md
     - REST API: usage/restapi.md
     - Admin: usage/admin.md
   - Application Description:
